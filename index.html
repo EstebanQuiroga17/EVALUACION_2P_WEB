@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen PArcial 2</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div
+            class="table-responsive"
+        >
+            <table
+                class="table table-primary text-center"
+            >
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Categoria</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="">
+                        <td scope="row" id="nombre1"></td>
+                        <td id="precio1"></td>
+                        <td id="cat1"></td>
+                    </tr>
+                    <tr class="">
+                        <td scope="row" id="nombre2"></td>
+                        <td id="precio2"></td>
+                        <td id="cat2"></td>
+                    </tr>
+                    <tr class="">
+                        <td scope="row" id="nombre3"></td>
+                        <td id="precio3"></td>
+                        <td id="cat3"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="d-grid gap-2">
+            <button
+                type="button"
+                name="btn_total"
+                id="btn_total"
+                class="btn btn-primary"
+            >
+                Calcular total
+            </button>
+        </div>
+        <br>
+        <div class="card text-start">
+            <div class="card-body">
+                <h4 class="card-title">Precio Total De Los Productos</h4>
+                <p class="card-text" id="p_precio"></p>
+            </div>
+        </div>
+        
+        
+        
+        
+    </div>
+
+    <script src="./public/js/productos.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
