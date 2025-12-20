@@ -1,3 +1,4 @@
+// Definicion de productos y arreglo de productos
 cuaderno = {
     nombre : "cuaderno",
     precio : 5,
@@ -16,54 +17,75 @@ computador = {
     categoria : "electronicos"
 };
 
-computador2 = {
-    nombre : "computador2",
-    precio : 500,
-    categoria : "electronicos"
-};
-
 productos = [cuaderno, lapiz, computador];
 
-var tabla = document.getElementById('tabla');
+//codificacion de metodos para mostrar productos y calcular total
+var tbl_productos = document.getElementById('tbl_productos');
 
-function mostrarProductos(){
-    var nombre =  document.getElementById("nombre1");
-    var precio =  document.getElementById("precio1");
-    var categoria =  document.getElementById("cat1");
-    nombre.innerText = cuaderno.nombre;
-    precio.innerText = cuaderno.precio;
-    categoria.innerText = cuaderno.categoria; 
-    
-    var nombre =  document.getElementById("nombre2");
-    var precio =  document.getElementById("precio2");
-    var categoria =  document.getElementById("cat2");
-    nombre.innerText = lapiz.nombre;
-    precio.innerText = lapiz.precio;
-    categoria.innerText = lapiz.categoria;  
+function agregarFila(producto){
+    let tr = document.createElement('tr');
 
-    var nombre =  document.getElementById("nombre3");
-    var precio =  document.getElementById("precio3");
-    var categoria =  document.getElementById("cat3");
-    nombre.innerText = computador.nombre;
-    precio.innerText = computador.precio;
-    categoria.innerText = computador.categoria;  
+            for(let clave in producto){
+                let td = document.createElement('td');
+                td.innerText = producto[clave];
+                tr.appendChild(td);
+            }
+            tbl_productos.appendChild(tr);
 }
 
-var total = 0;
+function mostrarProductos(clave, valor){
+    productos.forEach(producto =>{  
+        if(producto[clave] == valor){
+            agregarFila(producto);
+        }else if(valor == 'Mostrar todos'){
+            agregarFila(producto);
+        }
+    })
+}
+
 
 function calcularTotal(){
+    let total = 0;
     productos.forEach(producto =>{
         console.log(producto.precio)
         total = total + producto.precio;
     })
+    return total;
 }
 
+// llenar select
+
+var select_filtrar = document.getElementById('select_filtrar');
+
+function llenarSelect(){
+    let categoriasDepuradas = [];
+    productos.forEach(producto => {
+        if(!categoriasDepuradas.includes(producto.categoria)){
+            categoriasDepuradas.push(producto.categoria);
+            let option = document.createElement('option');
+            option.value = producto.categoria;
+            option.innerText = producto.categoria;
+            select_filtrar.appendChild(option);
+        }
+    })
+}
+
+// codigo para boton calcular total
 var btn_total = document.getElementById('btn_total');
 var p_precio = document.getElementById('p_precio');
 
 btn_total.addEventListener('click', function(event){
-    calcularTotal();
-    p_precio.innerText = total;
+    p_precio.innerText = calcularTotal();
 });
 
-mostrarProductos()
+// codigo para filtrar por categoria
+var btn_filtrar = document.getElementById('btn_filtrar');
+
+btn_filtrar.addEventListener('click', function(event){
+    let categoriaSeleccionada = select_filtrar.value;
+    tbl_productos.innerHTML = "";
+    mostrarProductos("categoria", categoriaSeleccionada);
+});
+
+mostrarProductos();
+llenarSelect();

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Examen PArcial 2</title>
+    <title>Examen Parcial 2</title>
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
 
-    <div class="container">
+    <div class="container mt-5">
         <div
             class="table-responsive"
         >
@@ -22,45 +22,59 @@
                         <th scope="col">Categoria</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr class="">
-                        <td scope="row" id="nombre1"></td>
-                        <td id="precio1"></td>
-                        <td id="cat1"></td>
-                    </tr>
-                    <tr class="">
-                        <td scope="row" id="nombre2"></td>
-                        <td id="precio2"></td>
-                        <td id="cat2"></td>
-                    </tr>
-                    <tr class="">
-                        <td scope="row" id="nombre3"></td>
-                        <td id="precio3"></td>
-                        <td id="cat3"></td>
-                    </tr>
+                <tbody id="tbl_productos">
+                    
                 </tbody>
             </table>
         </div>
 
-        <div class="d-grid gap-2">
-            <button
-                type="button"
-                name="btn_total"
-                id="btn_total"
-                class="btn btn-primary"
-            >
-                Calcular total
-            </button>
-        </div>
-        <br>
-        <div class="card text-start">
-            <div class="card-body">
-                <h4 class="card-title">Precio Total De Los Productos</h4>
-                <p class="card-text" id="p_precio"></p>
+        <div class="row mb-3">
+            <div class="col-6">
+                <div class="card text-start p-6">
+                    <div class="card-body">
+                        <h4 class="card-title">Precio Total De Los Productos</h4>
+                        <p class="card-text" id="p_precio"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <select class="form-select" aria-label="Default select example" id="select_filtrar" >
+                    <option value="" disabled selected hidden>Seleccione una categoria</option>
+                    <option value="Mostrar todos">Mostrar todos</option>
+                </select>
             </div>
         </div>
         
+        <div class="row">
+            <div class="col-6">
+                <div class="d-grid gap">
+                    <button
+                        type="button"
+                        name="btn_total"
+                        id="btn_total"
+                        class="btn btn-primary"
+                    >
+                        Calcular total
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="d-grid gap">
+                    <button
+                        type="button"
+                        name="btn_filtrar"
+                        id="btn_filtrar"
+                        class="btn btn-primary"
+                    >
+                        Filtrar por categoria
+                    </button>
+                </div>
+            </div>
+        </div>
         
+
         
         
     </div>
